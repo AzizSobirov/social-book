@@ -5,10 +5,10 @@ import type { Post } from "../types";
 
 const store = usePosts();
 const show = defineModel("modelValue", { type: Boolean });
-const props = defineProps<{ post: Post | null }>();
+const props = defineProps<{ post: Post }>();
 
 const message = ref<string>("");
-const textarea = ref<HTMLTextAreaElement>(null);
+const textarea = ref();
 
 const adjustTextarea = (): void => {
   textarea.value.style.height = "50px";
@@ -26,7 +26,7 @@ watchEffect(() => {
   <div class="popup" v-if="show">
     <form
       @submit.prevent="
-        store.updatePost(props.post.id, message);
+        props.post && store.updatePost(props.post.id, message);
         show = false;
       "
       class="popup__form container"

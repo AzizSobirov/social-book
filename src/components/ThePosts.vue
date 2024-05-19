@@ -3,14 +3,15 @@ import { ref } from "vue";
 import { usePosts } from "../stores/posts";
 import ThePopup from "./ThePopup.vue";
 import ThePost from "./ThePost.vue";
+import type { Post } from "../types";
 
 const store = usePosts();
 
 const comment = ref<string>("");
-const activePost = ref(null);
+const activePost = ref();
 const showPopup = ref<boolean>(false);
 
-const editPost = (post): void => {
+const editPost = (post: Post): void => {
   showPopup.value = true;
   activePost.value = post;
 };

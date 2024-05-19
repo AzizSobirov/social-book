@@ -5,7 +5,7 @@ import { usePosts } from "../stores/posts";
 const store = usePosts();
 
 const message = ref<string>("");
-const textarea = ref<HTMLTextAreaElement>(null);
+const textarea = ref();
 
 const adjustTextarea = (): void => {
   textarea.value.style.height = "50px";
